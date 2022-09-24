@@ -1,5 +1,5 @@
-format = "($shell)$directory$sudo$character"
-right_format = "$cmd_duration"
+format = "($shell)$directory$username$character"
+right_format = "$status$cmd_duration"
 
 [shell]
 bash_indicator = "Ｂ"
@@ -11,17 +11,15 @@ disabled = false
 [directory]
 fish_style_pwd_dir_length = 1
 
-[sudo]
-allow_windows = true
-disabled = false
-format = "[$symbol]($style)"
-symbol = "！"
-style = "bold red"
+[username]
+format = "[U:$user]($style) "
 
+[status]
+disabled = false
 
 [cmd_duration]
 min_time = 1_000
-format = "[$duration]($style)"
+format = "[$duration]($style) "
 style = "white"
 show_notifications = true
 min_time_to_notify = 30_000

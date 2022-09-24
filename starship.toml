@@ -1,0 +1,27 @@
+format = "($shell)$directory$sudo$character"
+right_format = "$cmd_duration"
+
+[shell]
+bash_indicator = "Ｂ"
+zsh_indicator = "Ｚ"
+powershell_indicator = "PS"
+style = "purple bold"
+disabled = false
+
+[directory]
+fish_style_pwd_dir_length = 1
+
+[sudo]
+allow_windows = true
+disabled = false
+format = "[$symbol]($style)"
+symbol = "！"
+style = "bold red"
+
+
+[cmd_duration]
+min_time = 1_000
+format = "[$duration]($style)"
+style = "white"
+show_notifications = true
+min_time_to_notify = 30_000

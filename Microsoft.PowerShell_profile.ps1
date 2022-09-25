@@ -1,3 +1,8 @@
+# set title via starship
+function Invoke-Starship-PreCommand {
+    $host.UI.RawUI.WindowTitle = "$([System.Environment]::UserName)@$(hostname):$(Split-Path -Leaf $PWD)"
+}
+
 # auto-suggestion
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 

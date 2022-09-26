@@ -3,8 +3,9 @@ function Invoke-Starship-PreCommand {
     $host.UI.RawUI.WindowTitle = "$([System.Environment]::UserName)@$(hostname):$(Split-Path -Leaf $PWD)"
 }
 
-# auto-suggestion
+# auto-suggestion and bash-like auto-completion
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -PredictionSource History
 
 # env-specified settings
 if($IsMacOS) {

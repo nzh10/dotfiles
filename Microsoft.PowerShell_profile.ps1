@@ -1,6 +1,18 @@
+# aliases
+Set-Alias -Name vi -Value vim
+
 # set title via starship
+function Get-PathTitle {
+    if("$PWD" -eq "$HOME") {
+    	return "~"
+    } else {
+    	return Split-Path -Leaf $PWD
+    }
+}
+
+## cache variable here
 function Invoke-Starship-PreCommand {
-    $host.UI.RawUI.WindowTitle = "$([System.Environment]::UserName)@$(hostname):$(Split-Path -Leaf $PWD)"
+    $host.UI.RawUI.WindowTitle = "$(Get-PathTitle):$([System.Environment]::UserName)@$([System.Net.Dns]::GetHostName())"
 }
 
 # auto-suggestion and bash-like auto-completion

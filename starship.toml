@@ -1,4 +1,5 @@
-format = "($shell)$directory$username$character"
+format = """$directory$git_branch
+($shell)$username$character"""
 right_format = "$status$cmd_duration"
 
 [shell]
@@ -13,6 +14,10 @@ fish_style_pwd_dir_length = 1
 
 [username]
 format = "[U:$user]($style) "
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+symbol = "🌱 "
 
 [status]
 disabled = false

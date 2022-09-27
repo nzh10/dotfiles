@@ -1,6 +1,9 @@
 # aliases
 Set-Alias -Name vi -Value vim
 
+# env settings
+$MaximumHistoryCount = 32767
+
 # set title via starship
 function Get-PathTitle {
     if("$PWD" -eq "$HOME") {
@@ -10,7 +13,6 @@ function Get-PathTitle {
     }
 }
 
-## cache variable here
 function Invoke-Starship-PreCommand {
     $host.UI.RawUI.WindowTitle = "$(Get-PathTitle):$([System.Environment]::UserName)@$([System.Net.Dns]::GetHostName())"
 }
@@ -18,6 +20,9 @@ function Invoke-Starship-PreCommand {
 # auto-suggestion and bash-like auto-completion
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -PredictionSource History
+## git auto-completion
+Import-Module posh-git
+$GitPromptSettings.EnablePromptStatus = $false
 
 # env-specified settings
 if($IsMacOS) {

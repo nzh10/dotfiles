@@ -1,6 +1,13 @@
 format = """$directory$git_branch
-($shell)$username$character"""
+($shell)$python$username$character"""
 right_format = "$status$cmd_duration"
+
+[directory]
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+symbol = "🌱 "
 
 [shell]
 bash_indicator = "Ｂ"
@@ -9,15 +16,13 @@ powershell_indicator = "PS"
 style = "purple bold"
 disabled = false
 
-[directory]
-fish_style_pwd_dir_length = 1
+[python]
+format = '[PY\(${pyenv_prefix}\):(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = 'pyenv'
 
 [username]
 format = "[U:$user]($style) "
-
-[git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
-symbol = "🌱 "
 
 [status]
 disabled = false

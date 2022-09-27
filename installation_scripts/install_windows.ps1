@@ -9,6 +9,10 @@ if (! $current_path -eq "$HOME/.config/dotfiles") {
     exit
 }
 
+if (! Get-Package -Name "posh-git") {
+    PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+}
+
 if (!
     #current role
     (New-Object Security.Principal.WindowsPrincipal(

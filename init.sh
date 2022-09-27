@@ -5,9 +5,23 @@ function set_win_title(){
 if [ -n "$ZSH_VERSION" ]; then
     __SHELL_NAME="zsh" 
     precmd_functions+=(set_win_title)
+    
+    ## history file settings
+    export HISTFILESIZE=1048576
+    export HISTSIZE=1048576
+    setopt INC_APPEND_HISTORY
+
+    export HISTTIMEFORMAT="[%F %T] "
+    setopt EXTENDED_HISTORY
+
+    setopt HIST_FIND_NO_DUPS
+    setopt HIST_IGNORE_ALL_DUPS
 elif [ -n "$BASH_VERSION" ]; then
     __SHELL_NAME="bash"
     starship_precmd_user_func="set_win_title"
+    # we will not set any other functions here,
+    # because when we use bash we often only want
+    # a clean and quiet environment.
 else
     echo "it is other shell, will not use init.sh."
     exit

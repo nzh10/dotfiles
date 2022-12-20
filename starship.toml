@@ -1,5 +1,5 @@
-format = """$directory$git_branch
-($shell)$python$username$character"""
+format = """$directory$git_branch$python$conda
+($shell)$username$character"""
 right_format = "$status$cmd_duration"
 
 [directory]
@@ -19,7 +19,11 @@ disabled = false
 [python]
 format = '[PY\(${pyenv_prefix}\):(${version} )(\($virtualenv\) )]($style)'
 pyenv_version_name = true
-pyenv_prefix = 'pyenv'
+pyenv_prefix = 'env'
+
+[conda]
+symbol = 'C:'
+format = '[$symbol$environment]($style) '
 
 [username]
 format = "[U:$user]($style) "

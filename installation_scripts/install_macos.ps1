@@ -4,6 +4,7 @@ if (!$IsMacOS || ! $PWD -eq "$HOME/.config/dotfiles" ) {
 }
 mkdir ../../powershell && ln -sv ../dotfiles/Microsoft.PowerShell_profile.ps1 ../../powershell
 ln -sv dotfiles/starship.toml ../..
+ln -sv dotfiles/condarc ../../.condarc
 
 echo '. $HOME/.config/dotfiles/init.sh' >> ~/.zshrc
 echo '. $HOME/.config/dotfiles/init.sh' >> ~/.bashrc

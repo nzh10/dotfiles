@@ -1,5 +1,24 @@
+# useful func for aliases
+function Get-LastArgs
+{
+    $lastHistory = (Get-History -count 1)
+    $lastCommand = $lastHistory.CommandLine   
+    $errors = [System.Management.Automation.PSParseError[]] @()
+
+    [System.Management.Automation.PsParser]::Tokenize($lastCommand, [ref] $errors) | ? {$_.type -eq "commandargument"} | select -last 1 -expand content    
+}
+
 # aliases
 Set-Alias -Name vi -Value vim
+
+function __ga() { git add }
+Set-Alias -Name ga -Value __ga
+function __gala() { git add --verbose (Get-LastArgs) }
+Set-Alias -Name ga.la -Value __gala
+function __gst() { git status }
+Set-Alias -Name gst -Value __gst
+
+
 
 # env settings
 $MaximumHistoryCount = 32767

@@ -31,3 +31,7 @@ eval "$(starship init $__SHELL_NAME)"
 # z.lua will be added AFTER starship
 eval "$(lua $HOME/.config/dotfiles/cross_platform_modules/z.lua/z.lua --init $__SHELL_NAME)"
 unset __SHELL_NAME
+
+# remove duplicate PATH
+if [[ -x /usr/bin/awk ]]; then export PATH="$(echo "$PATH" | /usr/bin/awk 'BEGIN { RS=":"; } { sub(sprintf("%c$", 10), ""); if (A[$0]) {} else { A[$0]=1; printf(((NR==1) ?"" : ":") $0) }}')" ; fi
+

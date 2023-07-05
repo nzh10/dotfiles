@@ -8,3 +8,5 @@ ln -sv dotfiles/condarc ../../.condarc
 
 echo '. $HOME/.config/dotfiles/init.sh' >> ~/.zshrc
 echo '. $HOME/.config/dotfiles/init.sh' >> ~/.bashrc
+echo '. $HOME/.config/dotfiles/profile/macos' >> ~/.profile
+echo "emulate sh -c '. ~/.profile'" >> ~/.zprofile

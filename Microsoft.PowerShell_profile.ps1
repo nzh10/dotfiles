@@ -9,15 +9,16 @@ function Get-LastArgs
 }
 
 # aliases
-Set-Alias -Name vi -Value vim
-
-function __ga() { git add }
+function __vi() { nvim $args }
+Set-Alias -Name vi -Value __vi
+function __ga() { git add $args }
 Set-Alias -Name ga -Value __ga
 function __gala() { git add --verbose (Get-LastArgs) }
 Set-Alias -Name ga.la -Value __gala
 function __gst() { git status }
 Set-Alias -Name gst -Value __gst
-
+function __em() { emeditor $args }
+Set-Alias -Name em -Value __em
 
 
 # env settings

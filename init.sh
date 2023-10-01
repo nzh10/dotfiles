@@ -35,3 +35,5 @@ unset __SHELL_NAME
 # remove duplicate PATH
 if [[ -x /usr/bin/awk ]]; then export PATH="$(echo "$PATH" | /usr/bin/awk 'BEGIN { RS=":"; } { sub(sprintf("%c$", 10), ""); if (A[$0]) {} else { A[$0]=1; printf(((NR==1) ?"" : ":") $0) }}')" ; fi
 
+alias quotify="$HOME/.config/dotfiles/scripts/quotify.pl"
+alias choose_lang='pwsh -noprofile -command '\''Get-Random -InputObject @("Python", "Rust", "C#", "C++", "Java")'\'''
